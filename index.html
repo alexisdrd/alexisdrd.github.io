@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Alexis Durand — Software engineering</title>
+<meta name="description" content="Software engineering student in Montréal. Selected projects in Go, Rust, Python and TypeScript.">
+<meta name="theme-color" content="#000000">
+
+<!-- Link previews (LinkedIn, Slack, Discord, iMessage).
+     Drop a 1200×630 image at images/og.png and uncomment the two lines below. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alexis Durand — Software engineering">
+<meta property="og:description" content="Software engineering student in Montréal. Selected projects in Go, Rust, Python and TypeScript.">
+<!-- <meta property="og:image" content="https://YOUR-DOMAIN/images/og.png"> -->
+<!-- <meta name="twitter:card" content="summary_large_image"> -->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Crect x='9' y='9' width='14' height='14' fill='%23F2EFE9'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#work" data-i18n="skip">Skip to projects</a>
+
+<header class="masthead">
+  <!-- Editing your name? Change it here and in <title> above. -->
+  <div class="wordmark"><a href="#top">Alexis Dur<em>a</em>nd</a></div>
+  <nav aria-label="Sections">
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#contact" class="nav-contact" data-i18n="nav.contact">Contact</a>
+    <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang.label">
+      <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fr" lang="fr" aria-pressed="false">FR</button>
+      <span class="lang-bar" aria-hidden="true"></span>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ═══════════ FRONT INDEX ═══════════
+       The list itself is built from CONTENTS in js/content.js. -->
+  <section class="index" id="top">
+    <div class="veil still" id="veil" aria-hidden="true"></div>
+
+    <div class="standfirst rise">
+      <h1 data-i18n="hero.title">Software engineering student. Four things I built to find out how they work.</h1>
+      <p data-i18n="hero.sub">Montréal. Looking for a summer 2027 internship — backend, systems, or anything with a hard problem in it.</p>
+    </div>
+
+    <ol class="contents rise" id="contents"></ol>
+
+    <div class="index-foot rise">
+      <div class="scrollcue" data-i18n-html="foot.scroll"><span></span>Scroll, or pick a line</div>
+      <div data-i18n="foot.updated">Updated September 2026</div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ PROJECTS ═══════════
+       Built from PROJECTS in js/content.js. -->
+  <div class="section-head" id="work">
+    <h2 data-i18n="work.title">Projects</h2>
+    <p data-i18n="work.sub">Each one keeps its own set of screens. Choose a frame on the left to bring it up.</p>
+  </div>
+  <div id="projects"></div>
+
+
+  <!-- ═══════════ ABOUT ═══════════
+       Plain HTML on purpose — it's read by search engines and by people with
+       JavaScript off, and you'll edit it by hand more often than you think. -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <h2 data-i18n="about.title">About</h2>
+      <div class="prose">
+        <p data-i18n="about.p1">I'm in my third year of software engineering in Montréal, somewhere between the compilers course that ruined my sleep schedule and the databases course that fixed it.</p>
+        <p data-i18n="about.p2">Most of what I build starts as a small annoyance — a schedule that takes an hour to make by hand, a bus I keep missing — and turns into an excuse to learn something properly. I care about the parts nobody sees: the query that got 40× faster, the error message that finally says what went wrong.</p>
+        <p data-i18n="about.p3">Outside of that I TA the first-year data structures course, which has taught me more about explaining things than any class I've taken.</p>
+
+        <div class="skillsets">
+          <div>
+            <h3 data-i18n="skills.comfortable">Comfortable with</h3>
+            <ul><li>Python</li><li>TypeScript</li><li>Go</li><li>SQL</li><li>C</li></ul>
+          </div>
+          <div>
+            <h3 data-i18n="skills.learning">Learning</h3>
+            <ul data-i18n-html="skills.learningList"><li>Rust</li><li>Distributed systems</li><li>Kubernetes</li></ul>
+          </div>
+          <div>
+            <h3 data-i18n="skills.tools">Tools</h3>
+            <ul data-i18n-html="skills.toolsList"><li>Postgres · Redis</li><li>Docker</li><li>React · Next.js</li><li>Git · CI pipelines</li><li>Linux</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section class="contact" id="contact">
+    <a class="big" href="mailto:alexis.durnd@gmail.com">alexis.durnd@gmail.com</a>
+    <div class="rows">
+      <div><span>Code</span><a href="https://github.com/alexisdrd">github.com/alexisdrd</a></div>
+      <div><span data-i18n="contact.profile">Profile</span><a href="https://www.linkedin.com/">linkedin.com/in/alexisdurand</a></div>
+      <div><span data-i18n="contact.resume">Résumé</span><a href="resume.pdf" data-i18n="contact.download">Download PDF</a></div>
+      <div data-i18n-html="contact.available"><span>Available</span>Summer 2027 internships</div>
+    </div>
+    <div class="colophon">
+      <span>© 2026 Alexis Durand — Montréal</span>
+      <a href="#top" data-i18n="contact.back">Back to contents</a>
+    </div>
+  </section>
+
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
