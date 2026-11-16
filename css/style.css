@@ -374,3 +374,71 @@ main,
   }
   .rise{opacity:1;transform:none}
 }
+
+
+/* ── 11. Screens: hover-only labels, scrolling strip ──────
+   The headline plate and the caption show only while the
+   picture is hovered (the caption also while the strip is used
+   from the keyboard),
+   so the screenshots read clean. The strip is a list as tall
+   as the frame: it scrolls, follows the selected screen, and
+   hides its scrollbar; a soft fade shows there is more. */
+.plate,.stage-rule,.caption{opacity:0;transition:opacity .3s var(--ease)}
+.stage:hover .plate,.stage:hover .stage-rule,.stage:hover .caption,
+.project-grid:has(.thumb:focus-visible) .caption{opacity:1}
+
+.strip{
+  position:relative;overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:0 8px 0 10px;margin:0 -8px 0 -10px;
+  scroll-behavior:smooth;
+  --fade:26px;
+}
+.strip::-webkit-scrollbar{display:none}
+.strip .thumb{flex:0 0 auto}
+.strip.more-after{
+  -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - var(--fade)),transparent);
+          mask-image:linear-gradient(to bottom,#000 calc(100% - var(--fade)),transparent);
+}
+.strip.more-before{
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 var(--fade));
+          mask-image:linear-gradient(to bottom,transparent,#000 var(--fade));
+}
+.strip.more-before.more-after{
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+          mask-image:linear-gradient(to bottom,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+}
+
+@media (max-width:720px){
+  .strip{overflow-x:auto;overflow-y:hidden;padding:0 0 6px;margin:0}
+  .strip .thumb{flex:0 0 94px}
+  .strip.more-after{
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - var(--fade)),transparent);
+            mask-image:linear-gradient(to right,#000 calc(100% - var(--fade)),transparent);
+  }
+  .strip.more-before{
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 var(--fade));
+            mask-image:linear-gradient(to right,transparent,#000 var(--fade));
+  }
+  .strip.more-before.more-after{
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+            mask-image:linear-gradient(to right,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){ .strip{scroll-behavior:auto} }
+
+/* Selected screen: a white border and nothing else (no slide,
+   no side line), drawn inside the thumbnail so the list never
+   cuts it. */
+.thumb[aria-current="true"]{transform:none;outline:2px solid var(--paper);outline-offset:-2px}
+.thumb[aria-current="true"]::before{content:none}
+.strip{padding:0;margin:0}
+@media (max-width:720px){ .thumb[aria-current="true"]{transform:none} }
+
+/* The plate now carries the picture's own title: a soft shade
+   keeps it readable over busy screenshots. */
+.plate{background:linear-gradient(to bottom,rgba(0,0,0,.72),rgba(0,0,0,.35) 70%,transparent)}
+.plate .figure{border-right:0;padding-right:0}
+.plate .figure b{font-size:clamp(18px,2vw,28px);letter-spacing:-.02em;line-height:1.1}
+.stage-rule{display:none}

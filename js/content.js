@@ -18,6 +18,8 @@
      metric — a reviewer who catches one stops reading.
 
    screens
+     Each screen can have a short `title`, shown over the
+     picture on hover (otherwise its caption is used).
      Until you have screenshots, each screen is drawn from a
      `kind`. Available kinds:
        'ui' · 'code' · 'terminal' · 'graph' · 'chart' · 'mobile'
@@ -31,6 +33,37 @@
    ────────────────────────────────────────────────────────── */
 
 export const PROJECTS = [
+  {
+    title: 'AstroWrap',
+    role: 'Earth analogs for the Moon and Mars',
+    context: 'NASA Space Apps Challenge · 2026',
+    headline: '613,252',
+    headlineLabel: 'Earth cells compared',
+    body: 'Paint any area on a 3D globe of the Moon or Mars, and AstroWrap finds the places on Earth that look most like it: test grounds for rovers, landers and crews. A Python pipeline turns NASA and ESA planetary data into an H3 hexagon grid, and a FastAPI and DuckDB server compares every Earth cell to the reference area, criterion by criterion, then explains each match with real values. Built in a team of four for the NASA Space Apps Challenge.',
+    stack: ['Python', 'DuckDB', 'FastAPI', 'H3', 'JavaScript', 'MapLibre', 'globe.gl'],
+    specs: [
+      ['Role', 'Pipeline + app'],
+      ['Team', '4 people'],
+      ['Status', 'Live at astrowrap.earth']
+    ],
+    links: [
+      ['Live', 'https://astrowrap.earth'],
+      ['Source', 'https://github.com/roseliz/NasaChallenges'],
+      ['Video', 'https://youtu.be/xlFHnAbUm48']
+    ],
+    screens: [
+      { src: 'images/astrowrap-hero.jpg', title: 'AstroWrap', caption: 'Places on Earth that look like your area on Mars' },
+      { src: 'images/astrowrap-scan.jpg', title: 'The scan', caption: 'One satellite per criterion scans the Earth' },
+      { src: 'images/astrowrap-twin.jpg', title: 'The Earth twin', caption: 'Your area on Mars and its closest match on Earth' },
+      { src: 'images/astrowrap-site.jpg', title: 'Site card', caption: 'Why this site: real values on both worlds' },
+      { src: 'images/astrowrap-terrain.jpg', title: 'Terrain in 3D', caption: 'Mars and Earth terrain side by side' },
+      { src: 'images/astrowrap-diagram-pipeline.jpg', title: 'How it works', caption: 'Open data, Python pipeline, H3 grid, scoring server, web app' },
+      { src: 'images/astrowrap-diagram-data.jpg', title: 'The data', caption: 'The datasets behind each criterion, on Earth, Mars and the Moon' },
+      { src: 'images/astrowrap-diagram-scoring.jpg', title: 'The scoring', caption: 'How one Earth cell is compared with the area' },
+      { src: 'images/astrowrap-diagram-funnel.jpg', title: 'The funnel', caption: 'From 613,252 Earth cells to ten sites' }
+    ]
+  },
+
   {
     title: 'Passages',
     role: 'Real-time transit arrivals',
@@ -105,31 +138,6 @@ export const PROJECTS = [
       { kind: 'code',     caption: 'Constraint model' },
       { kind: 'terminal', caption: 'Scraper run' }
     ]
-  },
-
-  {
-    title: 'Marge',
-    role: 'Collaborative reading and annotation',
-    context: 'Hackathon, then kept going · 2024',
-    headline: 'TypeScript',
-    headlineLabel: 'primary',
-    body: 'Built in 36 hours so my study group could stop screenshotting PDFs at each other. Highlights sync live across everyone reading the same paper, threads hang off the margin. The hard part was conflict resolution on overlapping selections — that took the next two months.',
-    stack: ['TypeScript', 'Next.js', 'Postgres', 'Yjs', 'WebSockets'],
-    specs: [
-      ['Role', 'Full stack'],
-      ['Team', '2 people'],
-      ['Status', 'Open source']
-    ],
-    links: [
-      ['Source', 'https://github.com/'],
-      ['Demo', '#']
-    ],
-    screens: [
-      { kind: 'ui',     caption: 'Reader with margin threads' },
-      { kind: 'graph',  caption: 'CRDT merge model' },
-      { kind: 'code',   caption: 'Selection resolver' },
-      { kind: 'mobile', caption: 'Reading view' }
-    ]
   }
 ];
 
@@ -146,10 +154,10 @@ export const PROJECTS = [
    ────────────────────────────────────────────────────────── */
 
 export const CONTENTS = [
-  { label: 'Passages', meta: 'Real-time transit · Go',    jump: 0 },
-  { label: 'Lumen',    meta: 'Language and VM · Rust',    jump: 1 },
-  { label: 'Atlas',    meta: 'Schedule solver · Python',  jump: 2 },
-  { label: 'Marge',    meta: 'Collaborative reader · TS', jump: 3 },
+  { label: 'AstroWrap', meta: 'Earth analogs for Mars · Python', jump: 0 },
+  { label: 'Passages', meta: 'Real-time transit · Go',    jump: 1 },
+  { label: 'Lumen',    meta: 'Language and VM · Rust',    jump: 2 },
+  { label: 'Atlas',    meta: 'Schedule solver · Python',  jump: 3 },
   { label: 'About',    meta: 'Who I am, what I use',      anchor: '#about' },
   { label: 'Contact',  meta: 'Open to summer 2027',       anchor: '#contact' }
 ];

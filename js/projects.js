@@ -33,8 +33,8 @@ function buildRow(p, pi, labels) {
           <span class="corner tl"></span><span class="corner tr"></span>
           <span class="corner bl"></span><span class="corner br"></span>
           <div class="plate">
-            <div class="figure"><b>${p.headline}</b><span>${p.headlineLabel}</span></div>
-            <div class="slug"><span class="br">${p.title}</span><em>${p.role}</em></div>
+            <div class="figure"><b class="shot-title"></b></div>
+            <div class="slug"><span class="br">${p.title}</span></div>
           </div>
           <div class="stage-rule"></div>
         </div>
@@ -63,6 +63,7 @@ function buildRow(p, pi, labels) {
   const frame  = section.querySelector('.frame');
   const capTxt = section.querySelector('.cap-text');
   const capNum = section.querySelector('.cap-count');
+  const shotTitle = section.querySelector('.shot-title');
 
   // All screens are stacked in the frame and cross-faded, rather
   // than swapping one element's source. Avoids a flash of empty
@@ -94,8 +95,46 @@ function buildRow(p, pi, labels) {
     layers.forEach((l, i) => l.classList.toggle('live', i === si));
     thumbs.forEach((t, i) => t.setAttribute('aria-current', String(i === si)));
     capTxt.textContent = p.screens[si].caption;
+    shotTitle.textContent = p.screens[si].title || p.screens[si].caption;
     capNum.textContent = `${pad(si + 1)} / ${pad(p.screens.length)}`;
+    keepVisible(thumbs[si]);
   }
+
+  // The strip is a fixed-height list as tall as the main frame
+  // (a row on phones). It scrolls on its own, without a visible
+  // scrollbar, and follows the selected screen.
+  const horizontal = () => getComputedStyle(strip).flexDirection === 'row';
+
+  function keepVisible(t) {
+    if (!t || !strip.isConnected) return;
+    const h = horizontal();
+    const start = h ? t.offsetLeft : t.offsetTop;
+    const size  = h ? t.offsetWidth : t.offsetHeight;
+    const pos   = h ? strip.scrollLeft : strip.scrollTop;
+    const view  = h ? strip.clientWidth : strip.clientHeight;
+    let to = null;
+    if (start < pos) to = start - 4;
+    else if (start + size > pos + view) to = start + size - view + 4;
+    if (to !== null) strip.scrollTo(h ? { left: to } : { top: to });
+  }
+
+  function updateFades() {
+    const h = horizontal();
+    const pos  = h ? strip.scrollLeft : strip.scrollTop;
+    const view = h ? strip.clientWidth : strip.clientHeight;
+    const full = h ? strip.scrollWidth : strip.scrollHeight;
+    strip.classList.toggle('more-before', pos > 2);
+    strip.classList.toggle('more-after', pos + view < full - 2);
+  }
+
+  function fitStrip() {
+    strip.style.maxHeight = horizontal() ? '' : `${frame.offsetHeight}px`;
+    updateFades();
+  }
+
+  strip.addEventListener('scroll', updateFades, { passive: true });
+  if ('ResizeObserver' in window) new ResizeObserver(fitStrip).observe(frame);
+  else window.addEventListener('resize', fitStrip);
 
   // Arrow keys move through the strip, like a real tab list.
   strip.addEventListener('keydown', e => {

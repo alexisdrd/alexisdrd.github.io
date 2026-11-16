@@ -9,6 +9,37 @@
 
 export const PROJECTS_FR = [
   {
+    title: 'AstroWrap',
+    role: 'Analogues terrestres de la Lune et de Mars',
+    context: 'NASA Space Apps Challenge · 2026',
+    headline: '613 252',
+    headlineLabel: 'cellules terrestres comparées',
+    body: 'Peignez n’importe quelle zone sur un globe 3D de la Lune ou de Mars, et AstroWrap trouve les endroits sur Terre qui lui ressemblent le plus : des terrains d’essai pour les rovers, les atterrisseurs et les équipages. Un pipeline Python transforme les données planétaires de la NASA et de l’ESA en grille hexagonale H3, puis un serveur FastAPI et DuckDB compare chaque cellule de la Terre à la zone de référence, critère par critère, et explique chaque résultat avec des valeurs réelles. Réalisé en équipe de quatre pour le NASA Space Apps Challenge.',
+    stack: ['Python', 'DuckDB', 'FastAPI', 'H3', 'JavaScript', 'MapLibre', 'globe.gl'],
+    specs: [
+      ['Rôle', 'Pipeline + application'],
+      ['Équipe', '4 personnes'],
+      ['Statut', 'En ligne : astrowrap.earth']
+    ],
+    links: [
+      ['Site', 'https://astrowrap.earth'],
+      ['Code', 'https://github.com/roseliz/NasaChallenges'],
+      ['Vidéo', 'https://youtu.be/xlFHnAbUm48']
+    ],
+    screens: [
+      { src: 'images/astrowrap-hero.jpg', title: 'AstroWrap', caption: 'Les endroits sur Terre qui ressemblent à votre zone sur Mars' },
+      { src: 'images/astrowrap-scan.jpg', title: 'Le balayage', caption: 'Un satellite par critère balaie la Terre' },
+      { src: 'images/astrowrap-twin.jpg', title: 'Le jumeau terrestre', caption: 'Votre zone sur Mars et son meilleur équivalent sur Terre' },
+      { src: 'images/astrowrap-site.jpg', title: 'Fiche du site', caption: 'Pourquoi ce site : les valeurs réelles des deux mondes' },
+      { src: 'images/astrowrap-terrain.jpg', title: 'Le terrain en 3D', caption: 'Le terrain de Mars et de la Terre côte à côte' },
+      { src: 'images/astrowrap-diagram-pipeline.jpg', title: 'Le fonctionnement', caption: 'Données ouvertes, pipeline Python, grille H3, serveur de score, application web' },
+      { src: 'images/astrowrap-diagram-data.jpg', title: 'Les données', caption: 'Les jeux de données de chaque critère, sur la Terre, Mars et la Lune' },
+      { src: 'images/astrowrap-diagram-scoring.jpg', title: 'Le score', caption: 'Comment une cellule de la Terre est comparée à la zone' },
+      { src: 'images/astrowrap-diagram-funnel.jpg', title: 'L’entonnoir', caption: 'De 613 252 cellules de la Terre à dix sites' }
+    ]
+  },
+
+  {
     title: 'Passages',
     role: 'Arrivées de transport en commun en temps réel',
     context: 'Projet personnel · 2026',
@@ -82,39 +113,14 @@ export const PROJECTS_FR = [
       { kind: 'code',     caption: 'Modèle de contraintes' },
       { kind: 'terminal', caption: 'Exécution du moissonneur' }
     ]
-  },
-
-  {
-    title: 'Marge',
-    role: 'Lecture et annotation collaboratives',
-    context: 'Hackathon, puis poursuivi · 2024',
-    headline: 'TypeScript',
-    headlineLabel: 'principal',
-    body: 'Bâti en 36 heures pour que mon groupe d’étude arrête de s’envoyer des captures d’écran de PDF. Les surlignages se synchronisent en direct entre tous ceux qui lisent le même article, et les discussions s’accrochent à la marge. Le plus dur : résoudre les conflits entre sélections qui se chevauchent — ça a pris les deux mois suivants.',
-    stack: ['TypeScript', 'Next.js', 'Postgres', 'Yjs', 'WebSockets'],
-    specs: [
-      ['Rôle', 'Full stack'],
-      ['Équipe', '2 personnes'],
-      ['Statut', 'Code source ouvert']
-    ],
-    links: [
-      ['Code', 'https://github.com/'],
-      ['Démo', '#']
-    ],
-    screens: [
-      { kind: 'ui',     caption: 'Lecteur et discussions en marge' },
-      { kind: 'graph',  caption: 'Modèle de fusion CRDT' },
-      { kind: 'code',   caption: 'Résolution des sélections' },
-      { kind: 'mobile', caption: 'Vue lecture' }
-    ]
   }
 ];
 
 export const CONTENTS_FR = [
-  { label: 'Passages', meta: 'Transport en temps réel · Go', jump: 0 },
-  { label: 'Lumen',    meta: 'Langage et VM · Rust',         jump: 1 },
-  { label: 'Atlas',    meta: 'Générateur d’horaires · Python', jump: 2 },
-  { label: 'Marge',    meta: 'Lecteur collaboratif · TS',    jump: 3 },
+  { label: 'AstroWrap', meta: 'Analogues terrestres · Python', jump: 0 },
+  { label: 'Passages', meta: 'Transport en temps réel · Go', jump: 1 },
+  { label: 'Lumen',    meta: 'Langage et VM · Rust',         jump: 2 },
+  { label: 'Atlas',    meta: 'Générateur d’horaires · Python', jump: 3 },
   { label: 'À propos', meta: 'Qui je suis, mes outils',      anchor: '#about' },
   { label: 'Contact',  meta: 'Disponible pour l’été 2027',   anchor: '#contact' }
 ];
